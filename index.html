@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compute 5 Key Points</title>
+  </head>
+  <body>
+    <h1>Enter your quadratic here:</h1><br>
+    <script>
+      function calculateKeyPoints() {
+        var form = document.getElementById("quadCalc");
+        var a, b, c;
+        a = Number(form.elements[0].value);
+        b = Number(form.elements[1].value);
+        c = Number(form.elements[2].value);
+        var xintplus = (-1*b+Math.sqrt(Math.pow(b, 2) - (4*a*c)))/(2*a);
+        var xintminus = (-1*b-Math.sqrt(Math.pow(b, 2) - (4*a*c)))/(2*a);
+        var mirror = -1*b/a;
+        var vertex = -1*b/(2*a);
+        var vertexy = a*Math.pow((-1*b/(2*a)), 2) + b*vertex + c;
+
+        document.getElementById("solutions").innerHTML =
+          "Vertex: (" + vertex + ", " + vertexy + ")<br>" +
+          "X-intercept: (" + xintplus + ", 0) <br>" +
+          "Second X-intercept: (" + xintminus + ", 0) <br>" +
+          "Y-intercept: (0, " + c + ")<br>" +
+          "Mirror point: (" + mirror + ", " + c + ")<br>";
+        }
+    </script>
+    <form id="quadCalc">
+      <input type="number" name="a">x^2 + <input type="number" name="b">x + <input type="number" name="b">
+      <br>
+      <input type="button" onclick="calculateKeyPoints()" value="Calculate!"></input>
+    </form>
+    <p id="solutions"></p>
+  </body>
+</html>
